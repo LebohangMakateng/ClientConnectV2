@@ -226,3 +226,5 @@ C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api
 C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api\obj\Debug\net5.0\ref\API.dll
 C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api\obj\Debug\net5.0\API.pdb
 C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api\obj\Debug\net5.0\API.genruntimeconfig.cache
+C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api\bin\Debug\net5.0\CloudinaryDotNet.dll
+C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api\bin\Debug\net5.0\Newtonsoft.Json.dll
