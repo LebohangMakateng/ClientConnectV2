@@ -1,0 +1,20 @@
+<div class="card" *ngIf="gig != null">
+    <div class="card-body mt-4">
+        <strong>Date</strong>
+        <p>{{gig.date | date}}</p>
+    </div>
+    <div class="card-body">
+        <strong>Description</strong>
+        <p>{{gig.description}}</p>
+    </div>
+    <div class="card-body">
+        <strong>Amount</strong>
+        <p>{{gig.taskrate | currency:'ZAR':'R'}}</p>
+    </div>
+    <div class="card-footer">
+        <div class="btn-group d-flex">
+            <a class="btn btn-primary" routerLink="/gig/edit">Edit</a>
+            <button class="btn btn-danger" (click)="deleteGig()">Delete</button>
+        </div>
+    </div>
+</div>
