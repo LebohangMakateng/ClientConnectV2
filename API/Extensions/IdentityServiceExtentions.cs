@@ -1,6 +1,7 @@
 using System.Text;
 using System.Threading.Tasks;
 using API.Data;
+using API.Entities;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -9,16 +10,19 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace API.Extensions
 {
-    public static class IdentityServiceExtentions
+    public static class IdentityServiceExtensions
     {
-        public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
+        public static IServiceCollection AddIdentityServices(this IServiceCollection services,
+        IConfiguration config)
         {
-            services.AddIdentityCore<IdentityUser>(options =>
+            services.AddIdentityCore<AppUser>(opt =>
             {
-                options.Password.RequireNonAlphanumeric = false;
-                options.User.RequireUniqueEmail = true;
+                opt.Password.RequireNonAlphanumeric = false;
             })
-                .AddSignInManager<SignInManager<IdentityUser>>()
+                .AddRoles<AppRole>()
+                .AddRoleManager<RoleManager<AppRole>>()
+                .AddSignInManager<SignInManager<AppUser>>()
+                .AddRoleValidator<RoleValidator<AppRole>>()
                 .AddEntityFrameworkStores<DataContext>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -31,7 +35,24 @@ namespace API.Extensions
                         ValidateIssuer = false,
                         ValidateAudience = false
                     };
+
+                    options.Events = new JwtBearerEvents
+                    {   
+                        OnMessageReceived = context =>
+                        {
+                            var accessToken = context.Request.Query["access_token"];
+                            var path = context.HttpContext.Request.Path;
+                            if(!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hubs"))
+                            {
+                                context.Token = accessToken;
+                            }
+
+                            return Task.CompletedTask;
+                        }
+
+                    };
                 });
+
             return services;
         }
     }

@@ -16,14 +16,14 @@ namespace API.Services
     public class TokenService : ITokenService
     {
         private readonly SymmetricSecurityKey _key;
-        private readonly UserManager<IdentityUser> _userManager;
-        public TokenService(IConfiguration config, UserManager<IdentityUser> userManager)
+        private readonly UserManager<AppUser> _userManager;
+        public TokenService(IConfiguration config, UserManager<AppUser> userManager)
         {
             _userManager = userManager;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
         }
 
-        public string CreateToken(IdentityUser user)
+        public string CreateToken(AppUser user)
         {
             var claims = new List<Claim>
             {

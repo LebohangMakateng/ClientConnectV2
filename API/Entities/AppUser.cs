@@ -8,6 +8,9 @@ namespace API.Entities
     {
         public string City { get; set; }
         public string Country { get; set; }
-        public ICollection<Photo> Photos { get; set; }
+        public string Biography {get; set;}
+        public string Profession {get; set;}
+        public ICollection<Photo> Photos { get; set; }        
+        public ICollection<AppUserRole> UserRoles { get; set; }
     }
 }

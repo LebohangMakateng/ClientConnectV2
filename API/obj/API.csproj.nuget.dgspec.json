@@ -72,7 +72,7 @@
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[5.0.17, )"
+              "version": "[5.0.14, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -81,6 +81,10 @@
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
               "version": "[6.19.0, )"
+            },
+            "System.Security.Claims": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

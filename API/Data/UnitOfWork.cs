@@ -7,11 +7,15 @@ namespace API.Data
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DataContext _context;
-        public UnitOfWork(DataContext context)
+        private readonly IMapper _mapper;
+        public UnitOfWork(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
 
         }
+
+        public IUserRepository UserRepository => new UserRepository(_context, _mapper);
         public IGigRepository GigRepository => new GigRepository(_context);
 
         public async Task<bool> Complete()

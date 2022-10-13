@@ -1,0 +1,28 @@
+[
+    {
+        "UserName": "Lisa",
+        "City": "Greenbush",
+        "Country": "Martinique",
+        "Biography": "I am a freelancer",
+        "Profession": "Photographer",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/women/54.jpg",
+                "IsMain": true
+            }
+        ]
+    },
+    {
+        "UserName": "Davis",
+        "City": "Lupton",
+        "Country": "Luxembourg",
+        "Biography": "I am a freelancer",
+        "Profession": "Photographer",
+        "Photos": [
+            {
+                "Url": "https://randomuser.me/api/portraits/men/93.jpg",
+                "IsMain": true
+            }
+        ]
+    }
+]
