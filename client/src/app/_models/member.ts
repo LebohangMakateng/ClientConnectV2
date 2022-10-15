@@ -5,6 +5,8 @@ export interface Member {
     userName: string;
     photoUrl: string;
     city: string;
+    biography: string;
+    profession: string;
     country: string;
     photos: Photo[];
   }

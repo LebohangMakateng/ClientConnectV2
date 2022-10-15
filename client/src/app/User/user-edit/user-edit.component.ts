@@ -6,6 +6,7 @@ import { Member } from 'src/app/_models/member';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
+import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 
 @Component({
   selector: 'app-user-edit',
@@ -39,7 +40,7 @@ export class UserEditComponent implements OnInit {
     }
 
     updateMember() {
-      this.memberService.updateMember(this.member).subscribe(() =>{
+      this.memberService.updateMember(this.user).subscribe(() =>{
         this.toastr.success('Profile updated succesfully');
         this.editForm.reset(this.member)
       })

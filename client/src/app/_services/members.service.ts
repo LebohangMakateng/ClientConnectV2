@@ -14,7 +14,7 @@ import { getPaginatedResult, getPaginationHeaders } from './paginationHelper';
 })
 export class MembersService {
   baseUrl = environment.apiUrl;
-  members: Member[] = [];
+  members: User[] = [];
   memberCache = new Map();
   user: User;
   //userParams: UserParams;
@@ -30,15 +30,15 @@ export class MembersService {
   getMember(username: string) {
     const member = [...this.memberCache.values()]
       .reduce((arr, elem) => arr.concat(elem.result), [] )
-      .find((member: Member) => member.userName ===username ) ;
+      .find((member: User) => member.username ===username ) ;
 
     if (member) {
       return of(member);
     }
-    return this.http.get<Member>(this.baseUrl + 'users/' + username);
+    return this.http.get<User>(this.baseUrl + 'users/' + username);
   }
 
-  updateMember(member: Member) {
+  updateMember(member:User) {
     return this.http.put(this.baseUrl + 'users', member).pipe(
       map(() => {
         const index = this.members.indexOf(member);

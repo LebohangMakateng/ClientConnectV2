@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { GigEditComponent } from '../modals/gig-edit/gig-edit.component';
+import { UserEditComponent } from '../user/user-edit/user-edit.component';
 
 @Injectable({
   providedIn: 'root'

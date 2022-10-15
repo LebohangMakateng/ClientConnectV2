@@ -18,7 +18,7 @@ export class GigEditComponent implements OnInit {
   id: number;
   editForm: FormGroup;
   formattedDate: string;
-  
+  use
   @HostListener('window:beforeunload', ['$event']) unloadNotification($event: any){
     if(this.editForm.dirty) {
       $event.returnValue = true;

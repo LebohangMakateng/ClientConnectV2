@@ -25,6 +25,9 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { DatePipe, DecimalPipe } from '@angular/common';
 import { HasRoleDirective } from './_directives/has-role.directive';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
+import { UserCardComponent } from './user/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,9 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
     DisclaimerComponent,
     HasRoleDirective,
     UserEditComponent,
+    PhotoEditorComponent,
+    UserDetailComponent,
+    UserCardComponent,
   ],
   imports: [
     BrowserModule,
