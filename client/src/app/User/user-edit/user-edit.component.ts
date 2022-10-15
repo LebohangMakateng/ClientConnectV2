@@ -15,7 +15,7 @@ import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
 })
 export class UserEditComponent implements OnInit {
       @ViewChild('editForm') editForm: NgForm
-      member: Member;
+      //member: Member;
       user: User;
       @HostListener('window:beforeunload', ['$event]']) unloadNotification($event: any) {
         if (this.editForm.dirty) {
@@ -35,14 +35,14 @@ export class UserEditComponent implements OnInit {
 
     loadMember() {
       this.memberService.getMember(this.user.username).subscribe(member => {
-        this.member = member;
+        this.user = member;
       });
     }
 
     updateMember() {
       this.memberService.updateMember(this.user).subscribe(() =>{
         this.toastr.success('Profile updated succesfully');
-        this.editForm.reset(this.member)
+        this.editForm.reset(this.user)
       })
     }
 
