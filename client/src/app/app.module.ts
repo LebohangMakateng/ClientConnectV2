@@ -28,6 +28,8 @@ import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserCardComponent } from './user/user-card/user-card.component';
+import { MessagesComponent } from './messages/messages.component';
+import { UserMessagesComponent } from './user/user-messages/user-messages.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { UserCardComponent } from './user/user-card/user-card.component';
     PhotoEditorComponent,
     UserDetailComponent,
     UserCardComponent,
+    MessagesComponent,
+    UserMessagesComponent,
   ],
   imports: [
     BrowserModule,

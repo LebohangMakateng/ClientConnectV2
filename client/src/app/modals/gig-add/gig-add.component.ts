@@ -28,10 +28,10 @@ export class GigAddComponent implements OnInit {
       date: [new Date, Validators.required],
       description: ['', Validators.required],
       title: ['', Validators.required],
-      taskrate: [this.decimalPipe.transform(0, '1.2-5'), [Validators.required, Validators.min(1)]],
-      taskratetype: ['', Validators.required],
+      taskrate: [Validators.required, Validators.min(1)],
       location: ['', Validators.required],
-      expertise: ['', Validators.required]
+      username: ['', Validators.required],
+      expertise: ['', Validators.required],
     })
   }
 

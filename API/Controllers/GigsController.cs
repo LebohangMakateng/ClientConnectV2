@@ -26,7 +26,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public async Task<ActionResult<IEnumerable<GigDto>>> GetGigs([FromQuery] GigParams gigParams)
         {
             var username = User.GetUserName();
@@ -39,7 +39,47 @@ namespace API.Controllers
                 gigs.TotalCount, gigs.TotalPages);
 
             return Ok(gigsToReturn);
+        }*/
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<GigDto>>> GetAllGigs([FromQuery] GigParams gigParams)
+        {
+            var gigs = await _unitOfWork.GigRepository.GetAllGigsAsync(gigParams);
+
+            var gigsToReturn = _mapper.Map<IEnumerable<GigDto>>(gigs);
+
+             Response.AddPaginationHeader(gigs.CurrentPage, gigs.PageSize,
+                gigs.TotalCount, gigs.TotalPages);
+
+            return Ok(gigsToReturn);
         }
+
+        /*[HttpGet]
+        public async Task<ActionResult<IEnumerable<GigDto>>> GetGigsByLocation(string location, [FromQuery] GigParams gigParams)
+        {
+            var gigs = await _unitOfWork.GigRepository.GetGigsByLocatioAsync(location, gigParams);
+
+            var gigsToReturn = _mapper.Map<IEnumerable<GigDto>>(gigs);
+
+            Response.AddPaginationHeader(gigs.CurrentPage, gigs.PageSize,
+                gigs.TotalCount, gigs.TotalPages);
+
+            return Ok(gigsToReturn);
+
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<GigDto>>> GetGigsByExpertise(string expertise,[FromQuery] GigParams gigParams)
+        {
+            var gigs = await _unitOfWork.GigRepository.GetGigsByProfessionAsync(expertise, gigParams);
+
+            var gigsToReturn = _mapper.Map<IEnumerable<GigDto>>(gigs);
+
+            Response.AddPaginationHeader(gigs.CurrentPage, gigs.PageSize,
+                gigs.TotalCount, gigs.TotalPages);
+
+            return Ok(gigsToReturn);
+        }*/
 
         [HttpGet("{id}")]
         public async Task<ActionResult<GigDto>> GetGig(int id)

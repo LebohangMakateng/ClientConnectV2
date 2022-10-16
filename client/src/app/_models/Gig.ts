@@ -7,5 +7,5 @@ export interface Gig {
     location: string;
     date: Date;
     expertise: string;
-    progress: string;
+    username: string;
 }

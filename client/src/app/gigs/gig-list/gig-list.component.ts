@@ -22,11 +22,18 @@ export class GigListComponent implements OnInit {
   constructor(private gigService: GigsService, private modalService: BsModalService) { }
 
   ngOnInit(): void {
-    this.loadGigs();
+    this.loadAllGigs();
   }
 
-  loadGigs() {
+  /**loadGigs() {
     this.gigService.getGigs(this.pageNumber, this.pageSize, this.filter).subscribe(response => {
+      this.gigs = response  response.result;
+      this.pagination = response.pagination;
+    })
+  };*/
+
+  loadAllGigs() {
+    this.gigService.getAllGigs(this.pageNumber, this.pageSize, this.filter).subscribe(response => {
       this.gigs = response.result;
       this.pagination = response.pagination;
     })
@@ -34,7 +41,7 @@ export class GigListComponent implements OnInit {
 
   pageChanged(event: any) {
     this.pageNumber = event.page;
-    this.loadGigs();
+    this.loadAllGigs();
   }
 
   openAddModal() {

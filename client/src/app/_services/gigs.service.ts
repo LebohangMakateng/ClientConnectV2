@@ -16,7 +16,31 @@ export class GigsService {
 
   constructor(private http: HttpClient) { }
 
-  getGigs(pageNumber: number, pageSize: number, filter: boolean) {
+  /*getGigs(pageNumber: number, pageSize: number, filter: boolean) {
+    let params = getPaginationHeaders(pageNumber, pageSize);
+
+    params = params.append('filter', filter);
+
+    return getPaginatedResult<Partial<Gig[]>>(this.baseUrl + 'gigs', params, this.http);
+  }*/
+
+  getAllGigs(pageNumber: number, pageSize: number, filter: boolean) {
+    let params = getPaginationHeaders(pageNumber, pageSize);
+
+    params = params.append('filter', filter);
+
+    return getPaginatedResult<Partial<Gig[]>>(this.baseUrl + 'gigs', params, this.http);
+  }
+
+  getGigsLocation(location: string, pageNumber: number, pageSize: number, filter: boolean){
+    let params = getPaginationHeaders(pageNumber, pageSize);
+
+    params = params.append('filter', filter);
+
+    return getPaginatedResult<Partial<Gig[]>>(this.baseUrl + 'gigs', params, this.http);
+  }
+
+  getGigsExpertise(expertise: string, pageNumber: number, pageSize: number, filter: boolean){
     let params = getPaginationHeaders(pageNumber, pageSize);
 
     params = params.append('filter', filter);

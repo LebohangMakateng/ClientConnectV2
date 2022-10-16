@@ -8,6 +8,7 @@ import { Message } from 'src/app/_models/message';
 import { User } from 'src/app/_models/user';
 import { AccountService } from 'src/app/_services/account.service';
 import { MembersService } from 'src/app/_services/members.service';
+import { MessageService } from 'src/app/_services/message.service';
 
 
 @Component({
@@ -17,14 +18,14 @@ import { MembersService } from 'src/app/_services/members.service';
 })
 export class UserDetailComponent implements OnInit{
   @ViewChild('memberTabs', {static: true}) memberTabs: TabsetComponent;
-  member: Member;
+  member: User;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
   activeTab: TabDirective;
   messages: Message[] = [];
   user: User;
 
-  constructor( private route: ActivatedRoute, private accountService: AccountService, 
+  constructor( private route: ActivatedRoute, private accountService: AccountService, private messageService: MessageService,
      private router: Router) { 
        this.accountService.currentUser$.pipe(take(1)).subscribe(user=> this.user = user);
        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -65,11 +66,11 @@ export class UserDetailComponent implements OnInit{
     return imageUrls;
   }
   
-  /*loadMessages() {
-    this.messageService.getMessageThread(this.member.userName).subscribe(messages => {
+  loadMessages() {
+    this.messageService.getMessageThread(this.member.username).subscribe(messages => {
       this.messages = messages;
-    });
-  }*/
+    })
+  }
 
   selectTab(tabId: number) {
     this.memberTabs.tabs[tabId].active = true;
@@ -77,11 +78,9 @@ export class UserDetailComponent implements OnInit{
 
   onTabActivated(data: TabDirective) {
     this.activeTab = data;
-    /*if(this.activeTab.heading === 'Messages' && this.messages.length === 0) {
-        this.messageService.createHubConnection(this.user, this.member.userName);
-    } else {
-      this.messageService.stopHubConnection();
-    }*/
+    if (this.activeTab.heading === 'Messages' && this.messages.length === 0) {
+      this.loadMessages();
+    }
   }
 
   /*ngOnDestroy(): void {

@@ -7,11 +7,14 @@ import { ServerErrorComponent } from './errors/server-error/server-error.compone
 import { GigDetailComponent } from './gigs/gig-detail/gig-detail.component';
 import { GigListComponent } from './gigs/gig-list/gig-list.component';
 import { HomeComponent } from './home/home.component';
+import { MessagesComponent } from './messages/messages.component';
 import { GigEditComponent } from './modals/gig-edit/gig-edit.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { GigResolverResolver } from './_resolvers/gig-resolver.resolver';
+import { MemberDetailedResolver } from './_resolvers/member-detailed.resolver';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,8 +24,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: 'gigs', component: GigListComponent},
+      {path: 'members/:username', component: UserDetailComponent, resolve: {member:MemberDetailedResolver}},
       {path: 'gigs/:id', component: GigDetailComponent, resolve: {gig: GigResolverResolver}},
       {path: 'gig/edit', component: GigEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
+      {path: 'messages', component: MessagesComponent},
       {path: 'user/edit', component: UserEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
     ]
   },

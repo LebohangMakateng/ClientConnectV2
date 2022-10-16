@@ -4,6 +4,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { GigEditComponent } from 'src/app/modals/gig-edit/gig-edit.component';
 import { Gig } from 'src/app/_models/Gig';
+import { User } from 'src/app/_models/user';
 import { GigsService } from 'src/app/_services/gigs.service';
 
 @Component({
@@ -13,6 +14,7 @@ import { GigsService } from 'src/app/_services/gigs.service';
 })
 export class GigDetailComponent implements OnInit {
   gig: Gig;
+  user: User;
   bsModalRef :BsModalRef;
 
   constructor(private gigService: GigsService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router) { }

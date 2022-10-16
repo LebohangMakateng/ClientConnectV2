@@ -50,6 +50,43 @@ namespace API.Data
             return await PagedList<Gig>.CreateAsync(query, gigParams.PageNumber, gigParams.PageSize);
         }
 
+        public async Task<PagedList<Gig>> GetAllGigsAsync(GigParams gigParams)
+        {
+            var query = _context.Gigs.AsQueryable();
+
+            var minDate = DateTime.Today.AddMonths(-1);
+            
+             if (gigParams.Filter)
+            {
+                query = query.Where(e => DateTime.Compare(e.Date, minDate) > 0);
+            }
+            return await PagedList<Gig>.CreateAsync(query, gigParams.PageNumber, gigParams.PageSize);
+        }
+
+         public async Task<PagedList<Gig>> GetGigsByLocatioAsync(string location, GigParams gigParams)
+        {
+             var query = _context.Gigs.Where(e => e.Location == location).AsNoTracking();
+
+             var minDate = DateTime.Today.AddMonths(-1);
+            if (gigParams.Filter)
+            {
+                query = query.Where(e => DateTime.Compare(e.Date, minDate) > 0);
+            }
+            return await PagedList<Gig>.CreateAsync(query, gigParams.PageNumber, gigParams.PageSize);
+        }
+
+        public async Task<PagedList<Gig>> GetGigsByProfessionAsync(string Expertise, GigParams gigParams)
+        {
+             var query = _context.Gigs.Where(e => e.Expertise == Expertise).AsNoTracking();
+
+             var minDate = DateTime.Today.AddMonths(-1);
+            if (gigParams.Filter)
+            {
+                query = query.Where(e => DateTime.Compare(e.Date, minDate) > 0);
+            }
+            return await PagedList<Gig>.CreateAsync(query, gigParams.PageNumber, gigParams.PageSize);
+        }
+
         public void Update(int id)
         {
             var gig = _context.Gigs.FirstOrDefault(e => e.Id == id);
