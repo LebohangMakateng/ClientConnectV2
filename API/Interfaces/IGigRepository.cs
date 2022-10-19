@@ -14,6 +14,7 @@ namespace API.Interfaces
         Task<PagedList<Gig>> GetGigsByUserAsync(string username, GigParams expenseParams);
 
         Task<PagedList<Gig>> GetAllGigsAsync(GigParams gigParams);
+        Task<PagedList<Gig>> SearchGigsAsync(string gigtitle, GigParams gigParams);
 
         Task<PagedList<Gig>> GetGigsByLocatioAsync(string username, GigParams expenseParams);
 

@@ -63,6 +63,17 @@ namespace API.Data
             return await PagedList<Gig>.CreateAsync(query, gigParams.PageNumber, gigParams.PageSize);
         }
 
+        public async Task<PagedList<Gig>> SearchGigsAsync(string gigtitle, GigParams gigParams)
+        {
+            //var query = _context.Gigs.AsQueryable();
+
+            //query = query.Where(e => e.Title.ToLower() == "plumber");
+
+            var query = _context.Gigs.Where(e => e.Title.ToLower().Contains(gigtitle));
+            
+            return await PagedList<Gig>.CreateAsync(query, gigParams.PageNumber, gigParams.PageSize);
+        }
+
          public async Task<PagedList<Gig>> GetGigsByLocatioAsync(string location, GigParams gigParams)
         {
              var query = _context.Gigs.Where(e => e.Location == location).AsNoTracking();
@@ -78,6 +89,7 @@ namespace API.Data
         public async Task<PagedList<Gig>> GetGigsByProfessionAsync(string Expertise, GigParams gigParams)
         {
              var query = _context.Gigs.Where(e => e.Expertise == Expertise).AsNoTracking();
+             //var gig = _context.Gigs.FirstOrDefault(e => e.Id == id);
 
              var minDate = DateTime.Today.AddMonths(-1);
             if (gigParams.Filter)

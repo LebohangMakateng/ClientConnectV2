@@ -6,6 +6,8 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorComponent } from './errors/server-error/server-error.component';
 import { GigDetailComponent } from './gigs/gig-detail/gig-detail.component';
 import { GigListComponent } from './gigs/gig-list/gig-list.component';
+import { MygigdetailComponent } from './gigs/mygigdetail/mygigdetail.component';
+import { MygigsComponent } from './gigs/mygigs/mygigs.component';
 import { HomeComponent } from './home/home.component';
 import { MessagesComponent } from './messages/messages.component';
 import { GigEditComponent } from './modals/gig-edit/gig-edit.component';
@@ -24,8 +26,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: 'gigs', component: GigListComponent},
+      {path: 'mygigs', component: MygigsComponent},
       {path: 'members/:username', component: UserDetailComponent, resolve: {member:MemberDetailedResolver}},
       {path: 'gigs/:id', component: GigDetailComponent, resolve: {gig: GigResolverResolver}},
+      {path: 'mygigsdetail/:id', component: MygigdetailComponent, resolve: {gig: GigResolverResolver}},
       {path: 'gig/edit', component: GigEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
       {path: 'messages', component: MessagesComponent},
       {path: 'user/edit', component: UserEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},

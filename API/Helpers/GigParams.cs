@@ -13,5 +13,7 @@ namespace API.Helpers
         }
 
         public bool Filter { get; set; } = false;
+
+        public string gigtitle {get; set;}
     }
 }

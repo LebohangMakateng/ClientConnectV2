@@ -16,23 +16,34 @@ export class GigsService {
 
   constructor(private http: HttpClient) { }
 
-  /*getGigs(pageNumber: number, pageSize: number, filter: boolean) {
+  getGigs(pageNumber: number, pageSize: number, filter: boolean) {
     let params = getPaginationHeaders(pageNumber, pageSize);
 
     params = params.append('filter', filter);
 
-    return getPaginatedResult<Partial<Gig[]>>(this.baseUrl + 'gigs', params, this.http);
-  }*/
+    return getPaginatedResult<Partial<Gig[]>>(this.baseUrl + 'gigs/GetGigs', params, this.http);
+  }
 
   getAllGigs(pageNumber: number, pageSize: number, filter: boolean) {
     let params = getPaginationHeaders(pageNumber, pageSize);
 
+    //params = params.append('gigtitle', gigtitle);
+
     params = params.append('filter', filter);
 
-    return getPaginatedResult<Partial<Gig[]>>(this.baseUrl + 'gigs', params, this.http);
+    return getPaginatedResult<Partial<Gig[]>>(this.baseUrl + 'gigs/GetAllGigs', params, this.http);
   }
 
-  getGigsLocation(location: string, pageNumber: number, pageSize: number, filter: boolean){
+  searchGigs(pageNumber: number, pageSize: number, gigtitle: string)
+  {
+    let params = getPaginationHeaders(pageNumber, pageSize);
+
+    params = params.append('gigtitle', gigtitle);
+
+    return getPaginatedResult<Partial<Gig[]>>(this.baseUrl + 'gigs/SearchGigs', params, this.http);
+  }
+
+  /*getGigsLocation(location: string, pageNumber: number, pageSize: number, filter: boolean){
     let params = getPaginationHeaders(pageNumber, pageSize);
 
     params = params.append('filter', filter);
@@ -46,7 +57,7 @@ export class GigsService {
     params = params.append('filter', filter);
 
     return getPaginatedResult<Partial<Gig[]>>(this.baseUrl + 'gigs', params, this.http);
-  }
+  }*/
 
   getGig(id: number) {
     return this.http.get<Gig>(this.baseUrl + 'gigs/' + id)

@@ -26,7 +26,7 @@ namespace API.Controllers
             _mapper = mapper;
         }
 
-        /*[HttpGet]
+        [HttpGet("GetGigs")]
         public async Task<ActionResult<IEnumerable<GigDto>>> GetGigs([FromQuery] GigParams gigParams)
         {
             var username = User.GetUserName();
@@ -39,12 +39,13 @@ namespace API.Controllers
                 gigs.TotalCount, gigs.TotalPages);
 
             return Ok(gigsToReturn);
-        }*/
+        }
 
-        [HttpGet]
+        [HttpGet("GetAllGigs")]
         public async Task<ActionResult<IEnumerable<GigDto>>> GetAllGigs([FromQuery] GigParams gigParams)
         {
-            var gigs = await _unitOfWork.GigRepository.GetAllGigsAsync(gigParams);
+            var gigtitle = gigParams.gigtitle;
+            var gigs = await _unitOfWork.GigRepository.GetAllGigsAsync( gigParams);
 
             var gigsToReturn = _mapper.Map<IEnumerable<GigDto>>(gigs);
 
@@ -53,6 +54,23 @@ namespace API.Controllers
 
             return Ok(gigsToReturn);
         }
+
+        [HttpGet("SearchGigs")]
+        public async Task<ActionResult<IEnumerable<GigDto>>> SearchGigs([FromQuery] GigParams gigParams)
+        {
+            var gigtitle = gigParams.gigtitle;
+
+            var gigs = await _unitOfWork.GigRepository.SearchGigsAsync(gigtitle, gigParams);
+
+             var gigsToReturn = _mapper.Map<IEnumerable<GigDto>>(gigs);
+
+             Response.AddPaginationHeader(gigs.CurrentPage, gigs.PageSize,
+                gigs.TotalCount, gigs.TotalPages);
+
+            return Ok(gigsToReturn);
+        }
+
+
 
         /*[HttpGet]
         public async Task<ActionResult<IEnumerable<GigDto>>> GetGigsByLocation(string location, [FromQuery] GigParams gigParams)

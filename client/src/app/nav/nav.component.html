@@ -9,12 +9,12 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="/messages" routerLinkActive="active">Messages</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/mygigs" routerLinkActive="active">My gigs</a>
+            </li>
             </ng-container>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
-            </li>
-            <li *appHasRole='["Freelancer"]' class="nav-item">
-              <a class="nav-link" routerLink="/admin" routerLinkActive="active">My gigs</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/disclaimer" routerLinkActive="active">Disclaimer</a>
@@ -25,7 +25,7 @@
         <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.username}}">
         <a class="dropdown-toggle text-light ml-3 " style="text-decoration: none;" dropdownToggle>Welcome {{user.username | titlecase}}</a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
-          <a class="dropdown-item" routerLink="user/edit">edit Profile</a>
+          <a class="dropdown-item" routerLink="user/edit">Edit Profile</a>
           <div class="dropdown-divider" ></div>
           <a class="dropdown-item" (click)="logout()">Logout</a>
         </div>

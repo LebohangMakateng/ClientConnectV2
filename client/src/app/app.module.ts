@@ -30,6 +30,8 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserCardComponent } from './user/user-card/user-card.component';
 import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user/user-messages/user-messages.component';
+import { MygigsComponent } from './gigs/mygigs/mygigs.component';
+import { MygigdetailComponent } from './gigs/mygigdetail/mygigdetail.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { UserMessagesComponent } from './user/user-messages/user-messages.compon
     UserCardComponent,
     MessagesComponent,
     UserMessagesComponent,
+    MygigsComponent,
+    MygigdetailComponent,
   ],
   imports: [
     BrowserModule,

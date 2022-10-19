@@ -1,28 +1,19 @@
 <div class="container">
     <button (click)="openAddModal()" class="btn btn-primary" style="margin: 10px;">Add new</button>
-    <form #form="ngForm" class="form-inline mb-3 d-inline" (ngSubmit)="loadAllGigs()">
+    <form #form="ngForm" class="form-inline mb-3 d-inline" (ngSubmit)="loadGigs()">
       <button class="btn btn-primary " type="submit">Apply Filter</button>
 
       <div class="form-check form-switch m-3">
         <input [checked]="filter" (change)="filter = !filter" type="checkbox" class="form-check-input align-self-end" id="customSwitches">
         <label class="custom-control-label" for="customSwitches">Gigs for current month</label>
       </div>
-      
-      <form class="form-inline mb-4" #messageForm="ngForm"  (ngSubmit)="(searchGigs())" autocomplete="on">
-        <div class="input-group ">
-            <input 
-                name="messageContent"
-                required
-                [(ngModel)]="gigtitle"
-                type="text" 
-                class="form-control input-sm me-4" 
-                placeholder="Search for gig by expertise">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="submit"  >Search</button>
-            </div>
-        </div>
-    </form>
 
+      <div>
+        <input  type="search" id="customSwitches" class="form-control">
+        <a class="btn btn-primary mb-3 mt-1">Search</a>
+      </div>
+
+      
   </form>
 
     <div class="card mb-4" *ngFor="let gig of gigs; let i = index">
@@ -32,8 +23,8 @@
         <p class="card-text ">{{gig.taskrate}} <i class="fa fa-money"></i></p>
         <strong><p class="card-text mt-4">{{gig.location }}</p></strong>
         <p><em class="card-text text-muted date">{{gig.date | date}}</em></p>
-        <a routerLink="/gigs/{{gig.id}}" class="stretched-link"></a>
-        <a routerLink="/gigs/{{gig.id}}" class="btn btn-primary ms-3">View</a>
+        <a routerLink="/mygigsdetail/{{gig.id}}" class="stretched-link"></a>
+        <a routerLink="/mygigsdetail/{{gig.id}}" class="btn btn-primary ms-3">View</a>
       </div>
     </div>
 
