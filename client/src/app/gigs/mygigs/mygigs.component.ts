@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { GigAddComponent } from 'src/app/modals/gig-add/gig-add.component';
 import { Gig } from 'src/app/_models/Gig';
@@ -11,6 +12,8 @@ import { GigsService } from 'src/app/_services/gigs.service';
   styleUrls: ['./mygigs.component.css']
 })
 export class MygigsComponent implements OnInit {
+  @ViewChild('messageForm') messageForm: NgForm;
+  gigtitle: string;
   gigs: Gig[];
   gig: Gig;
   bsModalRef: BsModalRef;
@@ -18,7 +21,6 @@ export class MygigsComponent implements OnInit {
   pageNumber = 1;
   pageSize = 10;
   filter = false;
-  gigtitle = "plumber";
 
   constructor(private gigService: GigsService, private modalService: BsModalService) { }
 

@@ -8,12 +8,20 @@
         <label class="custom-control-label" for="customSwitches">Gigs for current month</label>
       </div>
 
-      <div>
-        <input  type="search" id="customSwitches" class="form-control">
-        <a class="btn btn-primary mb-3 mt-1">Search</a>
-      </div>
-
-      
+      <form class="form-inline mb-4" #messageForm="ngForm"  (ngSubmit)="(searchGigs())" autocomplete="on">
+        <div class="input-group ">
+            <input 
+                name="messageContent"
+                required
+                [(ngModel)]="gigtitle"
+                type="text" 
+                class="form-control input-sm me-4" 
+                placeholder="Search for gig by expertise">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit"  >Search</button>
+            </div>
+        </div>
+    </form>
   </form>
 
     <div class="card mb-4" *ngFor="let gig of gigs; let i = index">

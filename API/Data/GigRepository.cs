@@ -69,7 +69,7 @@ namespace API.Data
 
             //query = query.Where(e => e.Title.ToLower() == "plumber");
 
-            var query = _context.Gigs.Where(e => e.Title.ToLower().Contains(gigtitle));
+            var query = _context.Gigs.Where(e => e.Title.ToLower().Contains(gigtitle) || e.Description.ToLower().Contains(gigtitle));
             
             return await PagedList<Gig>.CreateAsync(query, gigParams.PageNumber, gigParams.PageSize);
         }
