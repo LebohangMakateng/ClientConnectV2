@@ -15,7 +15,7 @@ export class MessagesComponent implements OnInit {
   pageNumber = 1;
   pageSize = 5;
   loading = false;
-  
+
   constructor(private messageService: MessageService) { }
 
   ngOnInit(): void {

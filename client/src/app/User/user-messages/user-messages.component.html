@@ -10,11 +10,11 @@
                     <span class="chat-img float-right">
                         <img class="rounded-circle" src="{{message.senderPhotoUrl || './assets/user.png'}}" 
                             alt="{{message.senderUsername}}">
+                        <h6>{{message.senderUsername | titlecase}}</h6>
                     </span>
                     <div class="chat-body">
                         <div class="header">
                             <small class="text-muted">
-                                <span class="fa fa-clock-o">{{message.messageSent | timeago}}</span>
                                 <span class="text-danger" *ngIf="!message.dateRead 
                                     && message.senderUsername !== username">
                                     (unread)
@@ -24,7 +24,7 @@
                                     (read {{message.dateRead | timeago}})
                                 </span>
                             </small>
-                        </div>
+                        </div>  
                         <p>{{message.content}}</p>
                     </div>
                 </div>

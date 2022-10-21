@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxGalleryAnimation, NgxGalleryImage, NgxGalleryOptions } from '@kolkov/ngx-gallery';
 import { TabDirective, TabsetComponent } from 'ngx-bootstrap/tabs';
@@ -12,7 +12,7 @@ import { MessageService } from 'src/app/_services/message.service';
 
 
 @Component({
-  selector: 'app-member-detail',
+  selector: 'app--detail',
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.css']
 })
@@ -68,6 +68,7 @@ export class UserDetailComponent implements OnInit{
   
   loadMessages() {
     this.messageService.getMessageThread(this.member.username).subscribe(messages => {
+      console.log(this.member.username);
       this.messages = messages;
     })
   }
@@ -75,7 +76,7 @@ export class UserDetailComponent implements OnInit{
   selectTab(tabId: number) {
     this.memberTabs.tabs[tabId].active = true;
   }
-
+  
   onTabActivated(data: TabDirective) {
     this.activeTab = data;
     if (this.activeTab.heading === 'Messages' && this.messages.length === 0) {
