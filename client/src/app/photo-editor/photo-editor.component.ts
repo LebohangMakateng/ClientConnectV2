@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
+import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
 import { Member } from 'src/app/_models/member';
 import { Photo } from 'src/app/_models/photo';
@@ -20,7 +21,7 @@ export class PhotoEditorComponent implements OnInit {
   baseUrl = environment.apiUrl;
 
 
-  constructor(private accountService: AccountService, private memberService: MembersService) { 
+  constructor(private accountService: AccountService, private toastr: ToastrService, private memberService: MembersService) { 
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
   }
 
@@ -74,8 +75,10 @@ export class PhotoEditorComponent implements OnInit {
 
   deletePhoto(photoId: number) {
     this.memberService.deletePhoto(photoId).subscribe(() => {
+      this.toastr.success('Photo Deleted successfully');
       this.user.photos = this.user.photos.filter(x => x.id !== photoId);
     });
+
   }
 
 }
