@@ -20,11 +20,9 @@
                                 <small class="text-muted">
                                     <span class="text-danger" *ngIf="!rating.dateRead 
                                         && rating.senderUsername !== username">
-                                        (unread)
                                     </span>
                                     <span class="text-success" *ngIf="rating.dateRead 
                                         && rating.senderUsername !== username">
-                                        (read {{rating.dateRead | timeago}})
                                     </span>
                                 </small>
                             </div>  

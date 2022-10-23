@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Pagination } from 'src/app/_models/pagination';
 import { Rating } from 'src/app/_models/rating';
 import { User } from 'src/app/_models/user';
@@ -25,19 +26,20 @@ export class RateUserComponent implements OnInit {
   member: User;
 
 
-  constructor( private route: ActivatedRoute, private ratingService: RatingService) { }
+  constructor( private route: ActivatedRoute, private toastr: ToastrService, private ratingService: RatingService) { }
 
   ngOnInit(): void {
     //this.route.data.subscribe(data => {
      // this.member = data.member;
     //})
-    this.loadRatings();
+    this.loadRatingThread();
   }
 
   sendRating() {
     this.ratingService.sendRating(this.username, this.ratingContent).subscribe(rating => {
+      this.toastr.success('Rating send successfully');
       this.ratings.push(rating);
-      //this.ratingForm.reset();
+      this.ratingForm.reset();
     })
   }
 
