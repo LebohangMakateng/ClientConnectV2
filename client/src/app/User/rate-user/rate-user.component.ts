@@ -15,7 +15,7 @@ import { RatingService } from 'src/app/_services/rating.service';
 export class RateUserComponent implements OnInit {
   @ViewChild('ratingForm') ratingForm: NgForm
   @Input() ratings: Rating[] = [];
-  @Input() username = "kagiso";
+  @Input() username: string;
   ratingContent: string;
   loading = false;
   pageNumber = 1;
