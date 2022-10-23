@@ -11,6 +11,7 @@ import { MygigsComponent } from './gigs/mygigs/mygigs.component';
 import { HomeComponent } from './home/home.component';
 import { MessagesComponent } from './messages/messages.component';
 import { GigEditComponent } from './modals/gig-edit/gig-edit.component';
+import { RateUserComponent } from './user/rate-user/rate-user.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -32,6 +33,7 @@ const routes: Routes = [
       {path: 'mygigsdetail/:id', component: MygigdetailComponent, resolve: {gig: GigResolverResolver}},
       {path: 'gig/edit', component: GigEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
       {path: 'messages', component: MessagesComponent},
+      {path: 'ratings', component: RateUserComponent},
       {path: 'user/edit', component: UserEditComponent, canDeactivate: [PreventUnsavedChangesGuard]},
     ]
   },

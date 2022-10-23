@@ -20,6 +20,8 @@ namespace API.Data
 
         public DbSet<Message> Messages { get; set; }
 
+        public DbSet<Rating> Ratings { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -44,6 +46,16 @@ namespace API.Data
             builder.Entity<Message>()
                 .HasOne(u => u.Sender)
                 .WithMany(m => m.MessagesSent)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            builder.Entity<Rating>()
+                .HasOne(u => u.Recipient)
+                .WithMany(m => m.RatingsReceived )
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Rating>()
+                .HasOne(u => u.Sender)
+                .WithMany(m => m.RatingsSent)
                 .OnDelete(DeleteBehavior.Restrict);
 
         }

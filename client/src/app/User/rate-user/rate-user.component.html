@@ -1,0 +1,71 @@
+<div class="card">
+    <strong>Ratings</strong>
+    <div class="card-body">
+        <div class="card-body">
+            <div *ngIf="ratings?.length === 0">
+                No ratings for this user yet.
+            </div>
+    
+            <ul *ngIf="ratings?.length > 0" class="chat">
+                <li *ngFor="let rating of ratings">
+                    <div>
+                        <span class="chat-img float-right"
+                        routerLink='{{"/members/" + rating.senderUsername}}'>
+                            <img class="rounded-circle" src="{{rating.senderPhotoUrl || './assets/user.png'}}" 
+                                alt="{{rating.senderUsername}}">
+                            <h6>{{rating.senderUsername | titlecase}}</h6>
+                        </span>
+                        <div class="chat-body">
+                            <div class="header">
+                                <small class="text-muted">
+                                    <span class="text-danger" *ngIf="!rating.dateRead 
+                                        && rating.senderUsername !== username">
+                                        (unread)
+                                    </span>
+                                    <span class="text-success" *ngIf="rating.dateRead 
+                                        && rating.senderUsername !== username">
+                                        (read {{rating.dateRead | timeago}})
+                                    </span>
+                                </small>
+                            </div>  
+                            <p>{{rating.content}}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+    <div class="card-footer">
+        <form #ratingForm="ngForm" (ngSubmit)="sendRating()" autocomplete="off">
+            <div class="input-group">
+                <input 
+                    name="ratingContent"
+                    required
+                    [(ngModel)]="ratingContent"
+                    type="text" 
+                    class="form-control input-sm" 
+                    placeholder="Send a rating">
+                <div class="input-group-append">
+                    <button [disabled]="!ratingForm.valid" class="btn btn-primary" type="submit">Send</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="pagination && !loading">
+    <pagination 
+        [boundaryLinks]="true" 
+        [totalItems]="pagination.totalItems"
+        [itemsPerPage]="pagination.itemsPerPage"
+        [(ngModel)]="pagination.currentPage"
+        (pageChanged)="pageChanged($event)"
+        previousText="&lsaquo;" 
+        nextText="&rsaquo;" 
+        firstText="&laquo;" 
+        lastText="&raquo;">
+</pagination>
+</div>

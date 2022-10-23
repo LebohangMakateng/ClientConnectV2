@@ -32,6 +32,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { UserMessagesComponent } from './user/user-messages/user-messages.component';
 import { MygigsComponent } from './gigs/mygigs/mygigs.component';
 import { MygigdetailComponent } from './gigs/mygigdetail/mygigdetail.component';
+import { RateUserComponent } from './user/rate-user/rate-user.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { MygigdetailComponent } from './gigs/mygigdetail/mygigdetail.component';
     UserMessagesComponent,
     MygigsComponent,
     MygigdetailComponent,
+    RateUserComponent,
   ],
   imports: [
     BrowserModule,

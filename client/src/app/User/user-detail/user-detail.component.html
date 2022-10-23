@@ -9,6 +9,9 @@
                     <p>{{member.city}}, {{member.country}}</p>
                 </div>
             </div>
+            <div class="card-footer">
+                <button routerLink="/ratings" class="btn btn-success btn-block">Rate this User</button>
+            </div>
         </div>
     </div>
     <div class="col-8">
@@ -26,6 +29,7 @@
             <tab heading="Messages" (selectTab)="onTabActivated($event)">
                 <app-user-messages [username]="member.username"></app-user-messages>
             </tab>
+
         </tabset>
     </div>
 </div> 

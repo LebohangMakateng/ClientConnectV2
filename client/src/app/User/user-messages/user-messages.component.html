@@ -7,7 +7,8 @@
         <ul *ngIf="messages?.length > 0" class="chat">
             <li *ngFor="let message of messages">
                 <div>
-                    <span class="chat-img float-right">
+                    <span class="chat-img float-right"
+                    routerLink='{{"/members/" + message.senderUsername}}'>
                         <img class="rounded-circle" src="{{message.senderPhotoUrl || './assets/user.png'}}" 
                             alt="{{message.senderUsername}}">
                         <h6>{{message.senderUsername | titlecase}}</h6>
