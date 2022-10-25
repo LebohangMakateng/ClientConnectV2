@@ -19,6 +19,15 @@
         <h4 class="mt-4">Task Rate</h4>
         <app-text-input [formControl]="editForm.controls['taskrate']" [(ngModel)]="gig.taskrate" [label]="'taskrate'" [type]="'number'"></app-text-input>
     </div>
+
+    <div class="mt-4">
+        <strong class="me-4">Hide Or Show Gig</strong>
+        <select [(ngModel)]="gig.hidden">
+            <option value="show">Show Gig</option>
+            <option value="hide">Hide Gig</option>
+        </select>
+    </div>
+
     <div class="form-group text-center mt-4">
         <a type="button" class="btn btn-default me-4" routerLink="/gigs">Back</a>
         <button [disabled]="!editForm.dirty" type="button" class="btn btn-success" (click)="updateGig()">Save

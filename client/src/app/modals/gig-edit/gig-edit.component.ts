@@ -4,8 +4,10 @@ import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angula
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs';
 import { Gig } from 'src/app/_models/Gig';
 import { User } from 'src/app/_models/user';
+import { AccountService } from 'src/app/_services/account.service';
 import { GigsService } from 'src/app/_services/gigs.service';
 
 @Component({
@@ -38,6 +40,7 @@ export class GigEditComponent implements OnInit {
     this.editForm = this.fb.group({
     date: [this.formattedDate, Validators.required],
     description: [this.gig.description, Validators.required],
+    hidegig: [this.gig.description, Validators.required],
     taskrate: [this.gig.taskrate, [Validators.required, Validators.min(1)]]
     
   })

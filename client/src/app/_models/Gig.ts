@@ -8,4 +8,5 @@ export interface Gig {
     date: Date;
     expertise: string;
     username: string;
+    hidden: string;
 }

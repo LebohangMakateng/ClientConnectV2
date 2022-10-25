@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Message } from 'src/app/_models/message';
 import { MembersService } from 'src/app/_services/members.service';
 import { MessageService } from 'src/app/_services/message.service';
@@ -16,7 +17,7 @@ export class UserMessagesComponent implements OnInit {
   messageContent: string;
   
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,  private toastr: ToastrService,) { }
 
   ngOnInit(): void {
     this.loadMessages();
@@ -24,6 +25,7 @@ export class UserMessagesComponent implements OnInit {
 
   sendMessage() {
     this.messageService.sendMessage(this.username, this.messageContent).subscribe(message => {
+      this.toastr.success('Message sent');
       this.messages.push(message);
       this.messageForm.reset();
     })

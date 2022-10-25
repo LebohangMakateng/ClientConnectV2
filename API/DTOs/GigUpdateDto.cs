@@ -8,5 +8,6 @@ namespace API.DTOs
         public string Description { get; set; }
         public Decimal TaskRate { get; set; }
         public DateTime Date { get; set; } = DateTime.Now;
+        public string Hidden { get; set; }
     }
 }

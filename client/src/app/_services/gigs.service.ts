@@ -64,7 +64,6 @@ export class GigsService {
   }
 
   updateGig(id, gig: Gig) {
-    console.log(gig);
     return this.http.put(this.baseUrl + 'gigs/' + id, gig);
   }
 

@@ -114,14 +114,15 @@ namespace API.Controllers
             var Gig = new Gig()
             {
                 Date = _gig.Date,
-                UserName = username,
+                Username = _gig.Username,
                 Title = _gig.Title,
                 Description = _gig.Description,
                 Expertise = _gig.Expertise,
                 Progress = _gig.Progress,
                 TaskRate = _gig.TaskRate,
                 RateType = _gig.RateType,
-                Location = _gig.Location
+                Location = _gig.Location,
+                Hidden = _gig.Hidden
 
             };
 

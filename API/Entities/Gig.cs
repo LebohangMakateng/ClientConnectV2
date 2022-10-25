@@ -24,8 +24,9 @@ namespace API.Entities
         public DateTime Date { get; set; }
         [Required]
         public string Expertise { get; set; }
-        public string UserName { get; set; }
+        public string Username { get; set; }
         public TaskProgress Progress { get; set; }
+        public string Hidden { get; set; }
     }
 
     public enum RateType

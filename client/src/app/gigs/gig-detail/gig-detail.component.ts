@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs';
 import { GigEditComponent } from 'src/app/modals/gig-edit/gig-edit.component';
 import { Gig } from 'src/app/_models/Gig';
 import { User } from 'src/app/_models/user';
+import { AccountService } from 'src/app/_services/account.service';
 import { GigsService } from 'src/app/_services/gigs.service';
 
 @Component({
@@ -17,12 +19,15 @@ export class GigDetailComponent implements OnInit {
   user: User;
   bsModalRef :BsModalRef;
 
-  constructor(private gigService: GigsService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router) { }
+  constructor(private accountService: AccountService, private gigService: GigsService, private route: ActivatedRoute, private toastr: ToastrService, private router: Router) { 
+    this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
+  }
 
   ngOnInit(): void {
     this.route.data.subscribe(data => {
       this.gig = data.gig;
       localStorage.setItem('currentGig', JSON.stringify(this.gig));
+      console.log(this.gig.username);
     })
   }
 

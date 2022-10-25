@@ -1,16 +1,6 @@
 <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" autocomplete="off">
     <h2 class="text-center text-primary mb-2">Sign up</h2>
     <hr>
-
-    <div class="form-group mb-4">
-        <label class="control-label" style="margin-right: 10px;">I am a: </label>
-        <label class="radio-inline me-2">
-          <input type="radio" value="client" formControlName="role"> Client
-        </label>
-        <label class="radio-inline me-2">
-          <input type="radio" value="freelancer" formControlName="role" class="ml-6"> Freelancer
-        </label>
-      </div>
     
     <div class="mb-4">
         <app-text-input [formControl]='registerForm.controls["username"]' 

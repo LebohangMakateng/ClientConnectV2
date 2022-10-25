@@ -40,7 +40,7 @@ namespace API.Data
 
         public async Task<PagedList<Gig>> GetGigsByUserAsync(string username, GigParams gigParams)
         {
-            var query = _context.Gigs.Where(e => e.UserName == username).AsNoTracking();
+            var query = _context.Gigs.Where(e => e.Username == username).AsNoTracking();
 
             var minDate = DateTime.Today.AddMonths(-1);
             if (gigParams.Filter)
@@ -53,6 +53,8 @@ namespace API.Data
         public async Task<PagedList<Gig>> GetAllGigsAsync(GigParams gigParams)
         {
             var query = _context.Gigs.AsQueryable();
+
+            //var query = _context.Gigs.Where(e => e.Hidden.ToLower().Contains("hide"));
 
             var minDate = DateTime.Today.AddMonths(-1);
             
