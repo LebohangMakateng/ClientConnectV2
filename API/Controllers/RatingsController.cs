@@ -40,7 +40,8 @@ namespace API.Controllers
 
             Console.Write(createRatingDto.RecipientUsername);
 
-            if (recipient == null) return BadRequest("Not working broer");
+            if (recipient == null) return NotFound();
+
 
             var rating = new Rating
             {
@@ -48,7 +49,8 @@ namespace API.Controllers
                 Recipient = recipient,
                 SenderUsername = sender.UserName,
                 RecipientUsername = recipient.UserName,
-                Content = createRatingDto.Content
+                Content = createRatingDto.Content,
+                Score = createRatingDto.Score
             };
 
             _ratingRepository.AddRating(rating);

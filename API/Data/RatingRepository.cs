@@ -66,31 +66,6 @@ namespace API.Data
             string recipientUsername)
         {
             var ratings = await _context.Ratings.Where(e => e.Recipient.UserName == recipientUsername).OrderBy(m => m.RatingSent).ToListAsync();
-
-            /*var ratings = await _context.Ratings
-                .Include(u => u.Sender).ThenInclude(p => p.Photos)
-                .Include(u => u.Recipient).ThenInclude(p => p.Photos)
-                .Where(m => m.Recipient.UserName == currentUsername && m.RecipientDeleted == false
-                        && m.Sender.UserName == recipientUsername
-                        || m.Recipient.UserName == recipientUsername
-                        && m.Sender.UserName == currentUsername && m.SenderDeleted == false
-                )
-                .OrderBy(m => m.RatingSent)
-                .ToListAsync();*/
-
-            /*var unreadRatings = ratings.Where(m => m.DateRead == null 
-                && m.Recipient.UserName == currentUsername).ToList();
-
-            if (unreadRatings.Any())
-            {
-                foreach (var rating in unreadRatings)
-                {
-                    rating.DateRead = DateTime.Now;
-                }
-
-                await _context.SaveChangesAsync();
-            }*/
-
             return _mapper.Map<IEnumerable<RatingDto>>(ratings);
         }
 

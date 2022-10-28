@@ -25,7 +25,12 @@
                                         && rating.senderUsername !== username">
                                     </span>
                                 </small>
-                            </div>  
+                            </div> 
+                            <div>
+                                <i class="fa fa-star me-1 " style='color: #f3da35'></i> 
+                            <strong>{{rating.score}}</strong>
+                            </div>
+                            <strong>{{rating.scoreAvg}}</strong>
                             <p>{{rating.content}}</p>
                         </div>
                     </div>
@@ -38,7 +43,18 @@
 
     <div class="card-footer">
         <form #ratingForm="ngForm" (ngSubmit)="sendRating()" autocomplete="off">
-            <div class="input-group">
+            <div class="mt-4">
+                <strong  class="me-2">Rate User</strong>
+                <select name="ratingScore" [(ngModel)]="ratingScore">
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select>
+            </div>
+
+            <div class="input-group mt-4">
                 <input 
                     name="ratingContent"
                     required

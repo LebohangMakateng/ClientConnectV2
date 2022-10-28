@@ -22,8 +22,8 @@ export class RatingService {
     return this.http.get<Rating[]>(this.baseUrl + 'ratings/thread/' + username);
   }
 
-  sendRating(username: string, content: string) {
-    return this.http.post<Rating>(this.baseUrl + 'ratings', {recipientUsername: username, content})
+  sendRating(username: string, content: string, score: number) {
+    return this.http.post<Rating>(this.baseUrl + 'ratings', {recipientUsername: username, content, score})
   }
 
   deleteRating(id: number) {

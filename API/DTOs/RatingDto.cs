@@ -12,6 +12,8 @@ namespace API.DTOs
         public string RecipientUsername { get; set; }
         public string RecipientPhotoUrl { get; set; }
         public string Content { get; set; }
+        public int Score {get; set;}
+        public int ScoreAvg {get; set;}
         public DateTime? DateRead { get; set; }
         public DateTime RateSent { get; set; }
     }

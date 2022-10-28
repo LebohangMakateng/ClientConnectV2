@@ -18,6 +18,7 @@ export class RateUserComponent implements OnInit {
   @Input() ratings: Rating[] = [];
   @Input() username: string;
   ratingContent: string;
+  ratingScore: number;
   loading = false;
   pageNumber = 1;
   pageSize = 5;
@@ -36,10 +37,11 @@ export class RateUserComponent implements OnInit {
   }
 
   sendRating() {
-    this.ratingService.sendRating(this.username, this.ratingContent).subscribe(rating => {
+    this.ratingService.sendRating(this.username, this.ratingContent, this.ratingScore).subscribe(rating => {
       this.toastr.success('Rating send successfully');
       this.ratings.push(rating);
       this.ratingForm.reset();
+      console.log(this.ratingScore);
     })
   }
 

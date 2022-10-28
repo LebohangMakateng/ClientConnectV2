@@ -7,6 +7,8 @@ export interface Rating {
     recipientUsername: string;
     recipientPhotoUrl: string;
     content: string;
+    score: number;
+    scoreAvg: number;
     dateRead?: Date;
     ratingSent: Date; 
 }
