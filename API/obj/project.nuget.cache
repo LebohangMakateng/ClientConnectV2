@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "MhSpCaj2YWp3al5RojOdUDjfIBZ8JgZf0W5j2l69t9Um+McXTqkAIinIN+6k87UpGDMZcaZqCkpgGBIjC65u9A==",
+  "dgSpecHash": "rXOP8eQnQG8L0oiLBm6qCxQY/LSu1wN+X4UwhOaYIuKOPTA9WvnEd2+rh9gY2t++fsu5FOj8E69bpUhNXZid+Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\20170\\Desktop\\Hons 2022\\ClientConnect Project Ver 2.0\\ClientConnect\\api\\API.csproj",
   "expectedPackageFiles": [
@@ -48,6 +48,8 @@
     "C:\\Users\\20170\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\20170\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\20170\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\20170\\.nuget\\packages\\npgsql\\5.0.10\\npgsql.5.0.10.nupkg.sha512",
+    "C:\\Users\\20170\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\5.0.10\\npgsql.entityframeworkcore.postgresql.5.0.10.nupkg.sha512",
     "C:\\Users\\20170\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.4\\sqlitepclraw.bundle_e_sqlite3.2.0.4.nupkg.sha512",
     "C:\\Users\\20170\\.nuget\\packages\\sqlitepclraw.core\\2.0.4\\sqlitepclraw.core.2.0.4.nupkg.sha512",
     "C:\\Users\\20170\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.4\\sqlitepclraw.lib.e_sqlite3.2.0.4.nupkg.sha512",

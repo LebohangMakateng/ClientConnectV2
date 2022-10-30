@@ -77,3 +77,5 @@ C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api
 C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api\obj\Debug\net5.0\API.RazorTargetAssemblyInfo.cache
 C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api\obj\Debug\net5.0\API.csproj.CopyComplete
 C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api\obj\Debug\net5.0\API.genruntimeconfig.cache
+C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api\bin\Debug\net5.0\Npgsql.dll
+C:\Users\20170\Desktop\Hons 2022\ClientConnect Project Ver 2.0\ClientConnect\api\bin\Debug\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
